@@ -133,7 +133,7 @@ const clouds = () => {
     mainHeading.style.display = 'none';
     mainPara.style.display = 'none';
     sun.style.display = 'block';
-    weatherCondition.style.background = 'rgb(117, 119, 247)';
+    weatherCondition.style.background = '#77b5fe';
 }
 
 //Defining Smoke Condition
@@ -149,7 +149,7 @@ const smoke = () => {
     mainHeading.style.display = 'none';
     mainPara.style.display = 'none';
     sun.style.display = 'block';
-    weatherCondition.style.background = 'linear-gradient(rgb(117, 119, 247),#ddd)';
+    weatherCondition.style.background = '#77b5fe,#ddd)';
 }
 
 // Defining Clear Condition when the weather is Clear
@@ -165,7 +165,7 @@ const Clear = () => {
     mainHeading.style.display = 'none';
     mainPara.style.display = 'none';
     sun.style.display = 'block';
-    weatherCondition.style.background = 'rgb(117, 119, 247)';
+    weatherCondition.style.background = '#77b5fe';
     let cloud1 = document.querySelector('.cloud1');
     let cloud2 = document.querySelector('.cloud2');
     let cloud3 = document.querySelector('.cloud3');

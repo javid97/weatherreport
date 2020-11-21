@@ -33,7 +33,7 @@ html {
     flex-direction: column;
     pointer-events: none;
     z-index: 0;
-    background: rgb(117, 119, 247);
+    background: #77b5fe;
     overflow: hidden;
 }
 .rainDrop {
