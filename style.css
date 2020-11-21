@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+:root {
+    --color: #071a52;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+html {
+    font-size: 62.5%;
+}
+#wrapper {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    padding-top: 1rem;
+    z-index: 1;
+    overflow: hidden;
+    color: var(--color);
+}
+#weatherCondition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    pointer-events: none;
+    z-index: 0;
+    background: rgb(117, 119, 247);
+    overflow: hidden;
+}
+.rainDrop {
+    position: absolute;
+    display: block;
+    background: #888d8d ;
+    border-radius: .2rem;
+    animation: animateRain .8s linear infinite;
+}
+.snowFlake {
+    position: absolute;
+    display: block;
+    background: #fff;
+    border-radius: .2rem;
+    animation: animateSnow 5s linear infinite
+}
+#weatherCondition img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10rem;
+    z-index: 1;
+}
+.mainHeading{
+    z-index: 100;
+    font-weight: bolder;
+    font-family: cooper;
+    font-size: 4rem;
+    color: var(--color);
+}
+.mainPara {
+    font-family:'Scada', sans-serif ;
+    color: var(--color);
+    font-size: 3rem;
+    z-index: 100;
+}
+#weatherCondition .cloud3 {
+    animation: animateCloud2 5s ease-in-out alternate infinite;
+    animation-delay: 2s;
+}
+#weatherCondition .cloud1 {
+    animation: animateCloud1 10s ease-in-out alternate infinite;
+}
+.sun {
+    position: absolute;
+    top: 4rem;
+    left: 20rem;
+    height: 15rem;
+    width: 15rem;
+    background: rgb(226, 223, 63);
+    box-shadow: 0 0 2rem rgb(255, 255, 255), inset 0 0 6rem #faa, 0 0 5rem rgb(255, 255, 255);
+    border-radius: 50%;
+    z-index: 0;
+}
+.nav {
+    height: 5rem;
+    width: 100%;
+    padding: 0 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+hr {
+    border: none;
+    background: var(--color);
+    height: .1rem;
+    margin: 0 auto;
+}
+.logo {
+    height: 100%;
+    width: 10rem;
+}
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 5rem;
+}
+.searchBar {
+    height: 100%;
+    line-height: 5rem;
+    position: relative;
+}
+.emptyInput {
+    position: absolute;
+    line-height: 2.5rem;
+    text-align: center;
+    top : 5rem;
+    height: 2.5rem;
+    font-size: 1.4rem;
+    width: 25rem;
+    display: none;
+    background: rgb(172, 15, 15);
+    color: #fff;
+}
+.emptyInput::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    bottom: 100%;
+    border-left: .8rem solid transparent;
+    border-right: .8rem solid transparent;
+    border-bottom: .8rem solid rgb(172, 15, 15);
+}
+.showEmptyMessage {
+    display: block;
+}
+.searchBar .search {
+    width: 25rem;
+    color: var(--color);
+    background: none;
+    height: 2.8rem;
+    font-family: 'Scada', sans-serif;
+    line-height: 5rem;
+    border: none;
+    outline: none;
+    padding-left: .5rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    transition: .5s ;
+    border-bottom: .2rem solid var(--color);
+}
+.searchBar .fa-search {
+    padding: 1rem;
+    font-size: 1.4rem;
+    background: var(--color);
+    border-radius: 50%;
+    color: #fff;
+    margin-left: -1.7rem;
+    transition: .5s;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.weatherUpadateContainer {
+    height: calc(100vh - 6rem);
+    width: 100vw;
+}
+.location {
+    width: 100%;
+    padding: 0 10rem;
+    margin-top: 1rem;
+    height: 3rem;
+    line-height: 4rem;
+}
+.location h1 {
+    height: 2rem;
+    font-size: 1.8rem;
+    font-family: 'montserrat',sans-serif;
+    font-weight: 700;
+}
+.locationIcon {
+    display: none;
+}
+.location .longLat {
+    font-size: 1.2rem;
+}
+.temp {
+    height: calc(100% - 20rem);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.temp .temperature {
+    font-family: tahoma;
+    font-weight: 800;
+    font-size: 6rem;
+}
+.temp .tempStatus {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+.temp .feelsWind {
+    margin-top: 1rem;
+    width: 30rem;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.temp .humvis {
+    margin-top: 1rem;
+    width: 30rem;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+@keyframes animateSnow {
+    from{transform: rotate(0)}
+    to{
+        transform: rotate(360deg);
+        top: 100%;
+    }
+}
+@keyframes animateRain {
+    from{transform: rotate(10deg)}
+    to{
+        transform: rotate(-10deg);
+        top: 100%;
+    }
+}
+
+@keyframes animateCloud1 {
+    from{
+        transform:scale(1) translateX(0);
+    }
+    to {
+        transform: scale(1.2) translateX(-10%);
+    }
+}
+
+@keyframes animateCloud2 {
+    from{
+        transform: scale(1) translateX(0);
+    }
+    to {
+        transform: scale(1.1) translate(20%);
+    }
+}
+
+@media screen and (max-width:900px) {
+    html{font-size: 60%;}
+    .nav {padding: 0px 2rem;}
+    .location{padding: 0px 20px;}
+    .mainHeading{font-size: 2.5rem;}
+    .mainPara{font-size: 2rem;}
+}
+@media screen and (max-width:600px) {
+    html{font-size: 50%;}
+    .nav {padding: 0 2rem;}
+    .location h1{font-size: 16px;}
+    .mainHeading{font-size: 2.5rem;}
+    .mainPara{font-size: 2rem;}
+}
+
+@media screen and (max-width:450px) {
+    html{font-size: 45%;}
+    .mainHeading{font-size: 1.6rem;}
+    .mainPara{font-size: 1.2rem;}
+    .temp .feelsWind{width: 29rem}
+    .searchBar .search{width: 20rem}
+    .emptyInput{width: 20rem; font-size: 1.2rem;}
+}
+@media screen and (max-width:300px) {
+    .searchBar .search{width: 13rem}
+    .temp{height: 100%;}
+    .temperature{font-size: 2rem;}
+    .emptyInput{width: 13rem; font-size: 1.2rem;}
+}
