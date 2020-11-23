@@ -123,10 +123,14 @@ const rain = () => {
 //Defining Clouds Condition
 const clouds = () => {
     //hiding rain drops and snowFlakes
-    let drops = weatherCondition.getElementsByTagName('i').length;
-    if (drops !== 0) {
+    if (rainDrop.length !== 0) {
         for (let i = 0; i <= snowFlake.length; i++) {
             drops[i].style.display = 'none';
+        }
+    }
+    if (snowFlake.length !== 0) {
+        for (let i = 0; i <= snowFlake.length; i++) {
+            snowFlake[i].style.display = 'none';
         }
     }
     //hiding the main heading and paragraph
@@ -139,26 +143,34 @@ const clouds = () => {
 //Defining Smoke Condition
 const smoke = () => {
     //hiding rain drops and snowFlakes
-    let drops = weatherCondition.getElementsByTagName('i').length;
-    if (drops !== 0) {
+    if (rainDrop.length !== 0) {
         for (let i = 0; i <= snowFlake.length; i++) {
             drops[i].style.display = 'none';
+        }
+    }
+    if (snowFlake.length !== 0) {
+        for (let i = 0; i <= snowFlake.length; i++) {
+            snowFlake[i].style.display = 'none';
         }
     }
     //hiding the main heading and paragraph
     mainHeading.style.display = 'none';
     mainPara.style.display = 'none';
     sun.style.display = 'block';
-    weatherCondition.style.background = '#77b5fe,#ddd)';
+    weatherCondition.style.background = 'linear-gradient(#77b5fe,#ddd)';
 }
 
 // Defining Clear Condition when the weather is Clear
 const Clear = () => {
     //hiding rain drops and snowFlakes
-    let drops = weatherCondition.getElementsByTagName('i').length;
-    if (drops !== 0) {
+    if (rainDrop.length !== 0) {
         for (let i = 0; i <= snowFlake.length; i++) {
             drops[i].style.display = 'none';
+        }
+    }
+    if (snowFlake.length !== 0) {
+        for (let i = 0; i <= snowFlake.length; i++) {
+            snowFlake[i].style.display = 'none';
         }
     }
     //hiding the main heading and paragraph
@@ -177,11 +189,11 @@ const  error =(err) => {
     mainHeading.style.display = 'block';
     mainPara.style.display = 'block';
     let drops = weatherCondition.getElementsByTagName('i').length;
-    if (drops !== 0) {
+    /*if (drops !== undefined) {
         for (let i = 0; i <= snowFlake.length; i++) {
             drops[i].style.display = 'none';
         }
-    }
+    }*/
     locationIcon.style.display = '';
     locationName.innerHTML = '';
     longLat.innerHTML = ``;
