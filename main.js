@@ -39,7 +39,7 @@ const displayData = (data) => {
         snow()
     } else if (data.weather[0].main == 'Clear') {
         Clear()
-    } else if (data.weather[0].main == 'Smoke' || data.weather[0].main == 'Haze') {
+    } else if (data.weather[0].main == 'Smoke' || data.weather[0].main == 'Haze' || data.weather[0].main == 'Fog') {
         smoke()
     } else {
         clouds()
