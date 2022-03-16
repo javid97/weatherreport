@@ -75,12 +75,6 @@ html {
     font-size: 4rem;
     color: var(--color);
 }
-.mainPara {
-    font-family:'Scada', sans-serif ;
-    color: var(--color);
-    font-size: 3rem;
-    z-index: 100;
-}
 #weatherCondition .cloud3 {
     animation: animateCloud2 5s ease-in-out alternate infinite;
     animation-delay: 2s;
@@ -271,7 +265,6 @@ hr {
     .nav {padding: 0px 2rem;}
     .location{padding: 0px 20px;}
     .mainHeading{font-size: 2.5rem;}
-    .mainPara{font-size: 2rem;}
 }
 @media screen and (max-width:600px) {
     html{font-size: 50%;}
@@ -279,13 +272,11 @@ hr {
     .nav {padding: 0 2rem;}
     .location h1{font-size: 16px;}
     .mainHeading{font-size: 2.5rem;}
-    .mainPara{font-size: 2rem;}
 }
 
 @media screen and (max-width:450px) {
     html{font-size: 45%;}
     .mainHeading{font-size: 1.6rem;}
-    .mainPara{font-size: 1.2rem;}
     .temp .feelsWind{width: 29rem}
     .searchBar .search{width: 20rem}
     .emptyInput{width: 20rem; font-size: 1.2rem;}

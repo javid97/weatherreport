@@ -1,15 +1,9 @@
 let input = document.getElementById("search");
 let btn = document.querySelector(".fa-search");
 let weatherCondition = document.getElementById("weatherCondition");
-let sun = document.querySelector(".sun");
 let mainHeading = document.querySelector(".mainHeading");
-let mainPara = document.querySelector(".mainPara");
-let rainDrop = weatherCondition.getElementsByClassName("rainDrop");
-let snowFlake = weatherCondition.getElementsByClassName("snowFlake");
 let emptyInput = document.querySelector(".emptyInput");
-const weatherUpadateContainer = document.querySelector(
-  ".weatherUpadateContainer"
-);
+const weatherUpadateContainer = document.querySelector(".weatherUpadateContainer");
 const visuals = document.getElementById("visuals");
 const API_URL = "https://api.openweathermap.org/data/2.5/weather?q=";
 const API_KEY = "df401346306992b0bafdda5b176a1970";
@@ -51,10 +45,7 @@ const fetchData = async (cityName) => {
 };
 //Defining data to be displayed on the basis of weather
 const displayData = (data) => {
-  let {
-    weather: [{ main }],
-  } = data;
-  //   main = "Rain";
+  const {weather: [{ main }],} = data
   renderVisuals(main);
   renderWeatherDetails(data);
 };
@@ -100,16 +91,12 @@ const renderWeatherDetails = (data) => {
                 <h1 class="temperature">${Math.round(temp)}&deg;C</h1>
                 <p class="tempStatus">${description}</p>
                 <p class="feelsWind">
-                    <label class="feelsLike">feels like : ${Math.trunc(
-                      feels_like
-                    )}&deg;C</label>
+                    <label class="feelsLike">feels like : ${Math.trunc(feels_like)}&deg;C</label>
                     <label class="windSpeed">wind speed: ${speed}mps</label>
                 </p>
                 <p class="humvis">
                     <label class="humidity">humidity: ${humidity}%</label>
-                    <label class="visibility">visibility: ${
-                      visibility / 1000
-                    }km</label>
+                    <label class="visibility">visibility: ${visibility / 1000}km</label>
                 </p>
             </div>`;
 };
@@ -120,12 +107,9 @@ const snow = () => {
   visuals.classList.remove("rain");
   weatherCondition.style.background = "rgb(150, 150, 150)";
   mainHeading.style.display = "none";
-  mainPara.style.display = "none";
-  sun.style.display = "none";
   let cloud1 = document.querySelector(".cloud1");
   cloud1.style.display = "none";
   //Creating snowFlakes when they don't exist
-  if (snowFlake.length == 0) {
     for (let i = 0; i <= 300; i++) {
       let snowFlakes = document.createElement("i");
       snowFlakes.className = "snowFlake";
@@ -141,29 +125,18 @@ const snow = () => {
       snowFlakes.style.animationDuration = duration + "s";
       visuals.appendChild(snowFlakes);
     }
-  }
 };
 //Defining Rain Conditon
 const rain = () => {
   weatherCondition.style.background = "rgb(150, 150, 150)";
   mainHeading.style.display = "none";
-  mainPara.style.display = "none";
-  sun.style.display = "none";
   visuals.className = "rain";
 };
 
 //Defining Clouds Condition
 const clouds = () => {
-  //hiding rain drops and snowFlakes
-  if (snowFlake.length !== 0) {
-    for (let i = 0; i <= snowFlake.length; i++) {
-      snowFlake[i].style.display = "none";
-    }
-  }
   //hiding the main heading and paragraph
   mainHeading.style.display = "none";
-  mainPara.style.display = "none";
-  sun.style.display = "block";
   weatherCondition.style.background = "#77b5fe";
   visuals.innerHTML = null;
   visuals.classList.remove("rain");
@@ -171,16 +144,8 @@ const clouds = () => {
 
 //Defining Smoke Condition
 const smoke = () => {
-  //hiding rain drops and snowFlakes
-  if (snowFlake.length !== 0) {
-    for (let i = 0; i <= snowFlake.length; i++) {
-      snowFlake[i].style.display = "none";
-    }
-  }
   //hiding the main heading and paragraph
   mainHeading.style.display = "none";
-  mainPara.style.display = "none";
-  sun.style.display = "block";
   weatherCondition.style.background = "linear-gradient(#77b5fe,#ddd)";
   visuals.innerHTML = null;
   visuals.classList.remove("rain");
@@ -188,16 +153,8 @@ const smoke = () => {
 
 // Defining Clear Condition when the weather is Clear
 const clear = () => {
-  //hiding rain drops and snowFlakes
-  if (snowFlake.length !== 0) {
-    for (let i = 0; i <= snowFlake.length; i++) {
-      snowFlake[i].style.display = "none";
-    }
-  }
   //hiding the main heading and paragraph
   mainHeading.style.display = "none";
-  mainPara.style.display = "none";
-  sun.style.display = "block";
   weatherCondition.style.background = "#77b5fe";
   // let cloud1 = document.querySelector('.cloud1');
   let cloud2 = document.querySelector(".cloud2");
@@ -210,10 +167,8 @@ const clear = () => {
 };
 const renderError = (err) => {
   mainHeading.style.display = "block";
-  mainPara.style.display = "block";
   weatherUpadateContainer.innerHTML = "";
   mainHeading.innerHTML = `<label style = "color: #f33">Oops! city not found</label>`;
-  mainPara.innerHTML = `<label style = "color: #f33">Make sure city name is spelt correctly</label>`;
 };
 
 //loads data when the user press the enter key
