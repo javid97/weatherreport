@@ -14,32 +14,13 @@
                 <h1>WeUpdate</h1>
             </div>
             <div class="searchBar">
-                <input type="search" class="search" placeholder="Search your city">
+                <input type="text" id="search" spellcheck="false" autocomplete="off" placeholder="Enter city name">
                 <i class="fas fa-search"></i>
-                <label class="emptyInput">please enter your city</label>
+                <label class="emptyInput">Enter city name</label>
             </div>
         </div>
         <hr>
-        <div class="weatherUpadateContainer">
-            <div class="location">
-                <h1><i class="fas fa-street-view locationIcon"></i>
-                    <label class="locationName"></label>
-                </h1>
-                <p class="longLat"></p>
-            </div>
-            <div class="temp">
-                <h1 class="temperature"></h1>
-                <p class="tempStatus"></p>
-                <p class="feelsWind">
-                    <label class="feelsLike"></label>
-                    <label class="windSpeed"></label>
-                </p>
-                <p class="humvis">
-                    <label class="humidity"></label>
-                    <label class="visibility"></label>
-                </p>
-            </div>
-        </div>
+        <div class="weatherUpadateContainer"></div>
     </div>
     <div id="weatherCondition">
         <h1 class="mainHeading">Get current weather update in your city</h1>
@@ -49,6 +30,7 @@
         <img src="images/cloud2.png" class="cloud3" />
         <div class="sun"></div>
     </div>
+    <div id="visuals"></div>
     <script src="main.js"></script>
 </body>
 </html>
