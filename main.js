@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const fetchDataOnLoad = async (lat, lon) => {
-  const API_ON_LOAD = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+  const API_ON_LOAD = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
   try {
     const response = await fetch(API_ON_LOAD);
     if (!response.ok) throw new Error("city couldn't find");
