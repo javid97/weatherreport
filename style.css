@@ -88,10 +88,8 @@ html {
     left: 20rem;
     height: 13rem;
     width: 13rem;
-    /* background: rgb(226, 223, 63); */
     background: #ffffff;
     box-shadow: 0px 0px 40px 15px #fff;
-    /* box-shadow: 0 0 2rem rgb(255, 255, 255), inset 0 0 6rem #faa, 0 0 5rem rgb(255, 255, 255); */
     border-radius: 50%;
     z-index: 0;
 }

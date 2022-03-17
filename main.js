@@ -1,7 +1,11 @@
+"use strict"
 let input = document.getElementById("search");
 let btn = document.querySelector(".fa-search");
 let weatherCondition = document.getElementById("weatherCondition");
 let mainHeading = document.querySelector(".mainHeading");
+let cloud1 = document.querySelector(".cloud1");
+let cloud2 = document.querySelector(".cloud2");
+let cloud3 = document.querySelector(".cloud3");
 let emptyInput = document.querySelector(".emptyInput");
 const weatherUpadateContainer = document.querySelector(".weatherUpadateContainer");
 const visuals = document.getElementById("visuals");
@@ -32,9 +36,7 @@ const fetchDataOnLoad = async (lat, lon) => {
 const fetchData = async (cityName) => {
   if (cityName !== "") {
     try {
-      const response = await fetch(
-        `${API_URL}${cityName}&appid=${API_KEY}&units=metric`
-      );
+      const response = await fetch(`${API_URL}${cityName}&appid=${API_KEY}&units=metric`);
       if (!response.ok) throw new Error("city couldn't find");
       const data = await response.json();
       displayData(data);
@@ -45,7 +47,7 @@ const fetchData = async (cityName) => {
 };
 //Defining data to be displayed on the basis of weather
 const displayData = (data) => {
-  const {weather: [{ main }],} = data
+  const {weather: [{ main }],} = data;
   renderVisuals(main);
   renderWeatherDetails(data);
 };
@@ -81,6 +83,7 @@ const renderWeatherDetails = (data) => {
     wind: { speed },
     visibility,
   } = data;
+  weatherUpadateContainer.innerHTML = null;
   weatherUpadateContainer.innerHTML = `<div class="location">
                 <h1><i class="fas fa-street-view locationIcon"></i>
                     <label class="locationName">${name}, ${country}</label>
@@ -103,12 +106,7 @@ const renderWeatherDetails = (data) => {
 
 //Defining Snow Condition
 const snow = () => {
-  visuals.innerHTML = null;
-  visuals.classList.remove("rain");
-  weatherCondition.style.background = "rgb(150, 150, 150)";
-  mainHeading.style.display = "none";
-  let cloud1 = document.querySelector(".cloud1");
-  cloud1.style.display = "none";
+  hideElements("rgb(150, 150, 150)", "block", "block", "block");
   //Creating snowFlakes when they don't exist
     for (let i = 0; i <= 300; i++) {
       let snowFlakes = document.createElement("i");
@@ -128,48 +126,41 @@ const snow = () => {
 };
 //Defining Rain Conditon
 const rain = () => {
-  weatherCondition.style.background = "rgb(150, 150, 150)";
-  mainHeading.style.display = "none";
+  hideElements("rgb(150, 150, 150)", "block", "block", "block");
   visuals.className = "rain";
 };
 
 //Defining Clouds Condition
 const clouds = () => {
-  //hiding the main heading and paragraph
-  mainHeading.style.display = "none";
-  weatherCondition.style.background = "#77b5fe";
-  visuals.innerHTML = null;
-  visuals.classList.remove("rain");
+  hideElements("#77b5fe", "block", "block", "block");
 };
 
 //Defining Smoke Condition
 const smoke = () => {
-  //hiding the main heading and paragraph
-  mainHeading.style.display = "none";
-  weatherCondition.style.background = "linear-gradient(#77b5fe,#ddd)";
-  visuals.innerHTML = null;
-  visuals.classList.remove("rain");
+  hideElements("linear-gradient(#77b5fe,#eee)", "block", "none", "none");
 };
 
 // Defining Clear Condition when the weather is Clear
 const clear = () => {
-  //hiding the main heading and paragraph
-  mainHeading.style.display = "none";
-  weatherCondition.style.background = "#77b5fe";
-  // let cloud1 = document.querySelector('.cloud1');
-  let cloud2 = document.querySelector(".cloud2");
-  let cloud3 = document.querySelector(".cloud3");
-  // cloud1.style.display = 'none';
-  cloud2.style.display = "none";
-  cloud3.style.display = "none";
-  visuals.innerHTML = null;
-  visuals.classList.remove("rain");
+  hideElements("#77b5fe", "block", "none", "none");
 };
+
 const renderError = (err) => {
   mainHeading.style.display = "block";
   weatherUpadateContainer.innerHTML = "";
   mainHeading.innerHTML = `<label style = "color: #f33">Oops! city not found</label>`;
 };
+
+const hideElements = (color, showCloud1, showCloud2, showCloud3) => {
+  mainHeading.style.display = "none";
+  weatherCondition.style.background = color;
+  visuals.innerHTML = null;
+  visuals.classList.remove("rain");
+  cloud1.style.display = showCloud1;
+  cloud2.style.display = showCloud2;
+  cloud3.style.display = showCloud3;
+};
+
 
 //loads data when the user press the enter key
 input.addEventListener("keyup", (event) => {
